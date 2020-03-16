@@ -6,7 +6,7 @@ export default ({
   registration,
   topSpeed
 }) => (
-  <div className='carStats'>
+  <div className='car-stats'>
     <span>Registration: { registration }</span>
     <span>Color: { color || 'Unknown' }</span>
     <span>Mileage: { mileage || 'Unknown' }</span>

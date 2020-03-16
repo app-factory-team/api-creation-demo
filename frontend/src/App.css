@@ -1,7 +1,17 @@
+:root {
+  --main-color-1: #647c98;
+  --main-color-2: #354f6d;
+  --main-color-3: #E5E4EA;
+  --main-color-4: #C1DCD6;
+  --main-color-5: #666769;
+}
+
 .App {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   flex-direction: column;
+  align-items: center;
+  background-color: var(--main-color-1);
 }
 
 main {
@@ -9,8 +19,56 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 75vw;
+  width: 800px;
+}
+
+header {
+  padding: 18px 0;
+  width: 100%;
+}
+
+header a {
+  padding: 24px;
+  text-decoration: none;
+  font-size: 36px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--main-color-2);
+  border-top: solid 5px black;
+  color: var(--main-color-3);
+  padding: 60px 0;
+  width: 100%;
+}
+
+footer div {
+  padding: 0 60px;
 }
 
 .search-error {
   color: red;
+}
+
+.search-bar {
+  padding: 48px 0;
+  max-width: 75vw;
+}
+
+.search-bar input {
+  height: 60px;
+  width: 400px;
+  max-width: calc(75vw - 24px);
+  border: 0;
+  padding: 0 12px;
+  letter-spacing: 5px;
+  font-size: 36px;
+  font-family: courier, monospace;
+}
+
+.car-stats {
+  background-color: var(--main-color-1);
 }
