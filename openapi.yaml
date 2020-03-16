@@ -9,26 +9,46 @@ info:
   contact:
     name: App Factory Team
     url: https://github.com/app-factory-team/api-creation-demo/issues
-  server:
-    url: http://localhost:3000/
+servers:
+  - url: http://localhost:3000/
     description: Local development environment
 externalDocs:
   url: https://github.com/app-factory-team/api-creation-demo/wiki
 paths:
-  /cars:
+  /car-info:
     get:
-      description: Returns information about cars based on provided registrations
+      description: Returns information about a car based on a provided registration
+      parameters:
+        - name: reg
+          in: query
+          description: Car registration
+          required: true
+          schema:
+            type: string
+            example: ABC123D
       responses:
         "200":
-          description: A list of cars
+          description: Information about a car
           content:
             application/json:
               schema:
-                type: object
-                required:
-                  - data
-                properties:
-                  data:
-                    type: array
-                    items: "#components/schema/car"
+                $ref: "#/components/schemas/carObject"
 components:
+  schemas:
+    carObject:
+      type: object
+      required:
+        - registration
+      properties:
+        registration:
+          type: string
+          example: ABC123D
+        color:
+          type: string
+          example: green
+        mileage:
+          type: integer
+          example: 10000
+        topSpeed:
+          type: integer
+          example: 180
