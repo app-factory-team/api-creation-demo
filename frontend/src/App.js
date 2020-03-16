@@ -1,32 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
+import SearchBar from './components/SearchBar'
+import SearchError from './components/SearchError'
 import CarStats from './components/CarStats'
-
-const SearchBar = ({
-  inputReg, setInputReg, updateData
-}) => (
-  <div>
-    <span>{ inputReg }</span>
-    <form onSubmit={ event => {
-      event.preventDefault()
-      updateData(inputReg)
-      return false
-     } }>
-      <input
-        value={ inputReg }
-        onChange={ event => setInputReg(event.target.value) }
-        type='text'
-        name='reg'
-      />
-      <button type='submit'>Search</button>
-    </form>
-  </div>
-)
 
 export default () => {
   const [inputReg, setInputReg] = useState('')
+  const [confirmedInputReg, setConfirmedInputReg] = useState('')
+  const [carData, setCarData] = useState(undefined)
+  const [searchError, setSearchError] = useState(false)
 
-  const updateData = console.log
+  useEffect(() => {
+    if (confirmedInputReg) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(`http://localhost:3000/car-info?reg=${confirmedInputReg}`)
+          const newCarData = await response.json()
+          setCarData(newCarData)
+          setSearchError(false)
+        } catch (error) {
+          setSearchError(true)
+        }
+      }
+      fetchData()
+    }
+  }, [confirmedInputReg, searchError])
 
   return (
     <div className='App'>
@@ -35,9 +33,11 @@ export default () => {
           <SearchBar
             inputReg={ inputReg }
             setInputReg={ setInputReg }
-            updateData= { updateData }
+            setConfirmedInputReg= { setConfirmedInputReg }
+            searchError={ searchError }
           />
-          { inputReg && <CarStats registration={ inputReg } /> }
+          { searchError && <SearchError /> }
+          { carData && <CarStats { ...carData } /> }
         </main>
         <footer>Footer</footer>
     </div>
