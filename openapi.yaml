@@ -1,0 +1,54 @@
+openapi: 3.0.2
+info:
+  title: Creative Automobile Reporting Service
+  version: "1.0.0"
+  description: "Provides fictional information about cars"
+  license:
+    name: "ISC"
+    url: "https://github.com/app-factory-team/api-creation-demo/blob/master/licence.md"
+  contact:
+    name: App Factory Team
+    url: https://github.com/app-factory-team/api-creation-demo/issues
+servers:
+  - url: http://localhost:3000/
+    description: Local development environment
+externalDocs:
+  url: https://github.com/app-factory-team/api-creation-demo/wiki
+paths:
+  /car-info:
+    get:
+      description: Returns information about a car based on a provided registration
+      parameters:
+        - name: reg
+          in: query
+          description: Car registration
+          required: true
+          schema:
+            type: string
+            example: ABC123D
+      responses:
+        "200":
+          description: Information about a car
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/carObject"
+components:
+  schemas:
+    carObject:
+      type: object
+      required:
+        - registration
+      properties:
+        registration:
+          type: string
+          example: ABC123D
+        color:
+          type: string
+          example: green
+        mileage:
+          type: integer
+          example: 10000
+        topSpeed:
+          type: integer
+          example: 180
