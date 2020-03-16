@@ -14,7 +14,7 @@ export default ({
         onChange={ event => setInputReg(event.target.value) }
         type='text'
         name='reg'
-        autocomplete='off'
+        autoComplete='off'
         className={ searchError ? 'search-error' : '' }
       />
       <button type='submit'>Search</button>
