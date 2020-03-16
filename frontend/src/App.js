@@ -4,6 +4,8 @@ import SearchBar from './components/SearchBar'
 import SearchError from './components/SearchError'
 import CarStats from './components/CarStats'
 import fetchCarInfo from './lib/fetchCarInfo'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 export default () => {
   const [inputReg, setInputReg] = useState('')
@@ -17,7 +19,7 @@ export default () => {
 
   return (
     <div className='App'>
-      <header>Header</header>
+      <Header />
       <main>
         <SearchBar
           inputReg={ inputReg }
@@ -28,7 +30,7 @@ export default () => {
         { searchError && <SearchError /> }
         { carData && <CarStats { ...carData } /> }
       </main>
-      <footer>Footer</footer>
+      <Footer />
     </div>
   )
 }
