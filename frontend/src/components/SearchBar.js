@@ -7,7 +7,7 @@ export default ({
   setInputReg
 }) => (
   <form
-    className='search-bar'
+    className='search'
     onSubmit={ event => {
       event.preventDefault()
       setConfirmedInputReg(inputReg)
@@ -20,9 +20,9 @@ export default ({
       type='text'
       name='reg'
       autoComplete='off'
-      maxlength='10'
-      className={ searchError ? 'search-error' : '' }
+      maxLength='10'
+      className={ searchError ? 'interactable search-bar search-error' : 'interactable search-bar' }
     />
-    <button type='submit'>Search</button>
+    <button type='submit' className='interactable search-button'>🔎 Search</button>
   </form>
 )
