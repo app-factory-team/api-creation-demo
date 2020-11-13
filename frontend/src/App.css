@@ -49,6 +49,7 @@ footer div {
 
 .interactable {
   transition: 0.5s;
+  border-radius: 12px;
 }
 
 .interactable:focus {
@@ -102,6 +103,16 @@ footer div {
   transition: 0.2s;
 }
 
-.car-stats {
-  background-color: var(--main-color-1);
+.car-color {
+  /* max-width: 800px; */
+  min-width: 200px;
+  display: flex;
+}
+
+.car-color div {
+  flex: 1;
+  min-width: 270px;
+}
+
+.car-color span {
 }

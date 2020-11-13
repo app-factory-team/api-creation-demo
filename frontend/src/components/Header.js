@@ -1,5 +1,5 @@
 import React from 'react'
 
 export default () => (
-  <header><a href='/'>🚗</a></header>
+  <header><a href='/' className='interactable'>🚗</a></header>
 )

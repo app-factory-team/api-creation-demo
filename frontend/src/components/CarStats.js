@@ -1,4 +1,5 @@
 import React from 'react'
+import CarColor from './CarColor'
 
 export default ({
   color,
@@ -7,8 +8,7 @@ export default ({
   topSpeed
 }) => (
   <div className='car-stats'>
-    <span>Registration: { registration }</span>
-    <span>Color: { color || 'Unknown' }</span>
+    <CarColor color={ color }></CarColor>
     <span>Mileage: { mileage || 'Unknown' }</span>
     <span>Top Speed: { topSpeed || 'Unknown' }</span>
   </div>
